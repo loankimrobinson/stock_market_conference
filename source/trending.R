@@ -3,7 +3,7 @@
 output$trending_stickers <- renderUI({
   
   dt <- trend_tickes()[1,]
-  dt$Change <- as.numeric(gsub("+","",dt$Change ))
+  dt$Change <- as.numeric(gsub("+|,","",dt$Change ))
   dt$change_out = ifelse(dt$Change >= 0, 
                         paste0("<span style='color:#32907c;'>", "+", sprintf("%.2f",dt$Change), " ( ", dt$`% Change`, " ) &#11014; </span>"),
                         paste0("<span style='color:#990000;'>",sprintf("%.2f",dt$Change), " ( ", dt$`% Change`, ") &#11015;</span>"))
